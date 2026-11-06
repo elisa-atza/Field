@@ -1,0 +1,18 @@
+# Pipeline configuration for the showcase notebook: one field, the reference
+# date and one more. helpers.py points FIELD_CONFIG here, so the pipeline's own
+# modules run unchanged. Inputs are read from examples/; everything the
+# notebook writes goes under showcase/outputs/, so examples/ is never modified.
+# Relative paths are relative to data_root.
+
+year = "2021"
+data_root = "../examples"
+images_dir = "{field}_{year}_crops"
+results_dir = "../showcase/outputs/{field}_{year}"
+plattegronden_xlsx = "Plattegronden.xlsx"  # not used: the layout files are already built
+segmentation = "per_date"
+
+[fields.S]
+dates = ["2021_06_28", "2021_07_03"]
+reference_date = "2021_07_03"
+lots_per_ridge = 30
+split_quadrants = false

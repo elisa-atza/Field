@@ -1,0 +1,32 @@
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# IDE
+.idea/
+.vscode/
+
+# Data and generated results. Apart from the worked example below, images,
+# grids, polygons and canopy tables live outside the repo (see field_paths.py).
+*.npy
+*.tif
+*.tiff
+*.xlsx
+*.csv
+*.gif
+*.png
+*.jpg
+
+# Exception: the one worked example (one field, one year), tracked on purpose
+# -- see examples/README.md. Its images are too large for git.
+!examples/**
+examples/*_crops/
+
+# Files written when the showcase notebook runs
+showcase/outputs/

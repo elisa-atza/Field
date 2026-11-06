@@ -1,0 +1,52 @@
+# Everything the pipeline needs to know about *your* data lives here.
+# Edit this file, not the Step*.py modules. field_paths.py reads it.
+#
+# The path templates below may use {field} and {year}. Relative paths are
+# relative to data_root.
+
+year = "2021"
+
+# Root folder holding the per-field folders. A relative path is relative to
+# the folder this file is in, so "examples" is the worked example shipped with
+# the repository. The FIELD_DATA_ROOT environment variable, if set, overrides
+# this.
+data_root = "examples"
+
+# Where each field's flight images are. Images are matched to a date by
+# filename: the file whose name contains the date string (see `dates` below)
+# is that date's image. .tif and .npy are both accepted.
+images_dir = "{field}_{year}_crops"
+
+# Where each field's results go: Markers/, Quadrants/, Grids/, Plattegronds/,
+# Polygons/, Raw_canopy_data/, Canopy data/ are created under it.
+results_dir = "{field}_{year}"
+
+# Trial layout spreadsheet, one sheet per field (sheet index set per field).
+# Not included with the worked example, whose layout files are already built.
+plattegronden_xlsx = "Plattegronden.xlsx"
+
+# How canopy pixels are told apart from soil:
+#   "fixed"    one hue/saturation band for every date (Step9's built-in bounds)
+#   "per_date" bounds chosen per flight date by color-bounds (Step8), followed
+#              by its vegetation-index mask; run then includes color-bounds
+segmentation = "per_date"
+
+
+# One table per field. Only the fields listed here are processed.
+[fields.S]
+# Flight dates, written exactly as they appear in the image filenames.
+dates = ["2021_06_28", "2021_07_03"
+        ]
+# The date the full boundary pipeline (boundaries, build-grid, correct-grid,
+# make-polygons) runs on. Polygons for the other dates are warped from it.
+# This date is chosen because plants in a plot on the field are visible and grown
+# and at the same time the gaps to the neighboring plots are very clear to see.
+reference_date = "2021_07_03"
+lots_per_ridge = 30
+# Set when each quadrant is two blocks of lots_per_ridge lots stacked along the
+# ridges: boundaries then also asks for the line between them, and build-grid
+# makes two grids per quadrant (1_1, 1_2, ...).
+split_quadrants = false
+# Sheet of plattegronden_xlsx holding this field's layout; only `plattegronds`
+# reads it, so it must be added before running that stage on a new field.
+# plattegrond_sheet = 0

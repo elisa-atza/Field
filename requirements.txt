@@ -1,0 +1,15 @@
+# GDAL is imported as `from osgeo import gdal`. The PyPI package is named GDAL
+# and needs the matching system libgdal; on Debian/Ubuntu:
+#   sudo apt install gdal-bin libgdal-dev
+#   pip install GDAL==$(gdal-config --version)
+# GDAL==3.4.1
+gif==22.5.0
+matplotlib==3.5.2
+numpy==1.21.5
+opencv-python==4.6.0.66
+pandas==1.4.2
+Pillow==9.2.0
+scikit-learn==1.1.1
+scipy==1.8.1
+openpyxl==3.0.10
+tomli==2.0.1; python_version < "3.11"

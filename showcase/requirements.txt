@@ -1,0 +1,13 @@
+# Exact versions used to execute the notebook (Python 3.10).
+ipykernel==7.3.0
+jupyter-client==8.10.0
+matplotlib==3.5.2
+matplotlib-inline==0.1.6
+nbconvert==7.17.2
+nbformat==5.11.1
+numpy==1.21.5
+opencv-python==4.6.0.66
+pandas==1.4.2
+pillow==9.2.0
+scipy==1.8.1
+tomli==2.0.1
